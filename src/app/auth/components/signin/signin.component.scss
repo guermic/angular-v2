@@ -1,5 +1,6 @@
-h1 {
+h2 {
   text-align: center;
+  margin-top: 3rem;
 }
 
 form {
@@ -8,6 +9,5 @@ form {
   flex-direction: column;
   width: 100%;
   margin: auto;
-  height: calc(100vh - 50px);
   justify-content: center;
 }

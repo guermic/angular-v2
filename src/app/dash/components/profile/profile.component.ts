@@ -5,6 +5,7 @@ import {AuthService} from '../../../core/services/auth.service';
 import {Observable} from 'rxjs';
 import {TagInterface} from '../../../core/interfaces/tag.interface';
 import {TagService} from '../../../core/services/tag.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private tagService: TagService
+    private tagService: TagService,
+    private _snackBar: MatSnackBar
   ) {
     this.tags$ = this.tagService.get();
   }
@@ -51,6 +53,10 @@ export class ProfileComponent implements OnInit {
   updateProfile(): void {
     const userChanges = this.userForm.getRawValue();
     this.profileService.updateChanges(userChanges).subscribe();
+
+    this._snackBar.open('Votre profil a été mis à jours avec succès', 'Fermer', {
+      duration: 2000,
+    });
   }
 
   compareIds(tagOption: TagInterface, tagSelection: TagInterface): boolean {
