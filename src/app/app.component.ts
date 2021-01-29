@@ -21,6 +21,10 @@ export class AppComponent {
     return AuthService.isSignedIn;
   }
 
+  get isAdminSignedIn(): boolean {
+    return AuthService.isAdminSignedIn;
+  }
+
   signout() {
 
     this._snackBar.open('Vous avez été déconnecté avec succès', 'Fermer', {

@@ -53,7 +53,15 @@ export class CanActivateGuard implements CanActivate {
             });
             this.router.navigate(['auth/landing-page']);
             return false;
+          } else if (response.roles.includes('ROLE_ADMIN')) {
+            this._snackBar.open('Vous êtes connecté en tant qu\'Administrateur', 'Fermer', {
+              duration: 2000,
+            });
+            return true;
           }
+          this._snackBar.open('Vous êtes connecté en tant qu\'utilisateur', 'Fermer', {
+            duration: 2000,
+          });
           return true;
         }
       })
